@@ -22,6 +22,7 @@ import org.example.project.securiry.jwt.JwtUtils;
 import org.example.project.service.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -29,10 +30,12 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @RequiredArgsConstructor
 public class IUserServiceImpl implements UserService {
+    private final RedisTemplate<String, Object> redisTemplate;
     private final BCryptPasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final RefreshTokenRepository refreshTokenRepository;
@@ -45,13 +48,13 @@ public class IUserServiceImpl implements UserService {
         String Password = passwordEncoder.encode(registerRequestDto.getPassword());
         registerRequestDto.setPassword(Password);
         if (userRepository.existsByEmail(registerRequestDto.getEmail())) {
-            throw new ValidAlreadyExistsException("Email Already Exists");
+            throw new ValidAlreadyExistsException("email", "Email Already Exists");
         }
         if (userRepository.existsByUsername(registerRequestDto.getUsername())) {
-            throw new ValidAlreadyExistsException("Username Already Exists");
+            throw new ValidAlreadyExistsException("username", "Username Already Exists");
         }
         if (userRepository.existsByPhoneNumber(registerRequestDto.getPhoneNumber())) {
-            throw new ValidAlreadyExistsException("PhoneNumber Already Exists");
+            throw new ValidAlreadyExistsException("phoneNumber", "PhoneNumber Already Exists");
         }
         User user = new User(registerRequestDto);
         return userRepository.save(user);
@@ -64,15 +67,15 @@ public class IUserServiceImpl implements UserService {
                 .orElseThrow(() -> new HttpNotFoundException("User not found"));
 
         if (userRepository.existsByEmailAndIdNot(dto.getEmail(), id)) {
-            throw new ValidAlreadyExistsException("Email Already Exists");
+            throw new ValidAlreadyExistsException("email", "Email Already Exists");
         }
 
         if (userRepository.existsByUsernameAndIdNot(dto.getUsername(), id)) {
-            throw new ValidAlreadyExistsException("Username Already Exists");
+            throw new ValidAlreadyExistsException("username", "Username Already Exists");
         }
 
         if (userRepository.existsByPhoneNumberAndIdNot(dto.getPhoneNumber(), id)) {
-            throw new ValidAlreadyExistsException("PhoneNumber Already Exists");
+            throw new ValidAlreadyExistsException("phoneNumber", "PhoneNumber Already Exists");
         }
 
         user.setEmail(dto.getEmail());
@@ -162,7 +165,14 @@ public class IUserServiceImpl implements UserService {
 
         refreshToken.setRevoked(true);
         refreshTokenRepository.save(refreshToken);
+        long ttl = exp.getTime() - System.currentTimeMillis();
 
+        redisTemplate.opsForValue().set(
+                token,
+                "BLACKLISTED",
+                ttl,
+                TimeUnit.MILLISECONDS
+        );
         tokenBlackListRepository.save(
                 TokenBlackList.builder()
                         .token(token)

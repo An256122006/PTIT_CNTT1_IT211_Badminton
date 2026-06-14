@@ -38,13 +38,19 @@ public class JwtUtils {
             return Jwts.parser()
                     .verifyWith(secretKey())
                     .build()
-                    .parseSignedClaims(token) !=null;
-        }catch (ExpiredJwtException e){
+                    .parseSignedClaims(token) != null;
+
+        } catch (ExpiredJwtException e){
             throw new TokenInValid("Expired JWT Token");
-        }catch (SignatureException e) {
+
+        } catch (SignatureException e){
             throw new TokenInValid("Invalid JWT Signature");
-        } catch (MalformedJwtException e) {
+
+        } catch (MalformedJwtException e){
             throw new TokenInValid("Invalid JWT Token");
+
+        } catch (Exception e){
+            return false;
         }
     }
     public String getUsername(String token){

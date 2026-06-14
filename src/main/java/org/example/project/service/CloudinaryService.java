@@ -29,4 +29,13 @@ public class CloudinaryService {
             throw new HttpUploadImageException("Upload failed");
         }
     }
+
+    public java.util.List<String> uploadFiles(java.util.List<MultipartFile> files) {
+        java.util.List<String> urls = new java.util.ArrayList<>();
+        for (MultipartFile f : files) {
+            if (f == null || f.isEmpty()) continue;
+            urls.add(uploadFile(f));
+        }
+        return urls;
+    }
 }

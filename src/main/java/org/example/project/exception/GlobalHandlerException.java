@@ -60,10 +60,19 @@ public class GlobalHandlerException {
     public ResponseEntity<ApiResponse<?>> handleEmailAlreadyExists(
             ValidAlreadyExistsException e) {
 
+        Map<String, String> errors = new HashMap<>();
+        String field = e.getField();
+        if (field != null && !field.isBlank()) {
+            errors.put(field, e.getMessage());
+        } else {
+            errors.put("error", e.getMessage());
+        }
+
         return ResponseEntity.badRequest().body(
                 ApiResponse.builder()
                         .success(false)
                         .status(400)
+                        .error(errors)
                         .message(e.getMessage())
                         .build()
         );
@@ -79,5 +88,32 @@ public class GlobalHandlerException {
                         .message(tokenInValid.getMessage())
                         .build()
         );
+    }
+    @ExceptionHandler(HttpNotFoundException.class)
+    public ResponseEntity<ApiResponse<?>> handleNotFound(
+            HttpNotFoundException e) {
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(
+                        ApiResponse.builder()
+                                .success(false)
+                                .status(404)
+                                .message(e.getMessage())
+                                .build()
+                );
+    }
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiResponse<?>> handleException(Exception e){
+
+        e.printStackTrace();
+
+        return ResponseEntity.status(500)
+                .body(
+                        ApiResponse.builder()
+                                .success(false)
+                                .status(500)
+                                .message(e.getMessage())
+                                .build()
+                );
     }
 }

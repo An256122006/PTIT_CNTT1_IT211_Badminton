@@ -1,8 +1,10 @@
 package org.example.project.service;
 
 import org.example.project.model.entity.Court;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 public interface CourtService {
-    Court updateCourt(Long id,String url);
+    Court uploadCourtImages(Long courtId, List<MultipartFile> files);
 }

@@ -43,6 +43,7 @@ public class BookingServiceImpl implements BookingService {
                     && oldEnd.isAfter(startTime)) {
 
                 throw new ValidAlreadyExistsException(
+                        "timeSlot",
                         "Khung giờ đã có người đặt"
                 );
             }
