@@ -5310,3 +5310,55 @@ Caused by: java.net.ConnectException: Connection refused: getsockopt
 2026-06-14T15:23:48.928+07:00  INFO 22412 --- [project] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 2026-06-14T15:23:50.903+07:00  WARN 22412 --- [project] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2026-06-14T15:23:52.642+07:00  INFO 22412 --- [project] [restartedMain] org.example.project.ProjectApplication   : Started ProjectApplication in 10.604 seconds (process running for 12.096)
+2026-06-14T15:44:22.493+07:00  INFO 22412 --- [project] [Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-14T15:44:22.508+07:00  INFO 22412 --- [project] [Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-14T15:44:22.732+07:00  INFO 22412 --- [project] [restartedMain] org.example.project.ProjectApplication   : Starting ProjectApplication using Java 21.0.7 with PID 22412 (E:\Web\prj\project\build\classes\java\main started by Trong An in E:\Web\prj\project)
+2026-06-14T15:44:22.732+07:00  INFO 22412 --- [project] [restartedMain] org.example.project.ProjectApplication   : The following 1 profile is active: "dev"
+2026-06-14T15:44:23.405+07:00  INFO 22412 --- [project] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-14T15:44:23.405+07:00  INFO 22412 --- [project] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-14T15:44:23.535+07:00  INFO 22412 --- [project] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-14T15:44:23.588+07:00  INFO 22412 --- [project] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-06-14T15:44:23.612+07:00  INFO 22412 --- [project] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@12216ef4
+2026-06-14T15:44:23.613+07:00  INFO 22412 --- [project] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-06-14T15:44:23.615+07:00  WARN 22412 --- [project] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-14T15:44:23.616+07:00  INFO 22412 --- [project] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/badminton?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.5
+	Default catalog/schema: badminton/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-14T15:44:23.844+07:00  INFO 22412 --- [project] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-14T15:44:24.316+07:00  WARN 22412 --- [project] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-14T15:44:24.892+07:00  INFO 22412 --- [project] [restartedMain] org.example.project.ProjectApplication   : Started ProjectApplication in 2.208 seconds (process running for 1244.346)
+2026-06-14T15:44:26.286+07:00  INFO 22412 --- [project] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-06-14T15:44:26.289+07:00  INFO 22412 --- [project] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2026-06-14T15:44:26.386+07:00  INFO 22412 --- [project] [restartedMain] org.example.project.ProjectApplication   : Starting ProjectApplication using Java 21.0.7 with PID 22412 (E:\Web\prj\project\build\classes\java\main started by Trong An in E:\Web\prj\project)
+2026-06-14T15:44:26.387+07:00  INFO 22412 --- [project] [restartedMain] org.example.project.ProjectApplication   : The following 1 profile is active: "dev"
+2026-06-14T15:44:26.870+07:00  INFO 22412 --- [project] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-14T15:44:26.871+07:00  INFO 22412 --- [project] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-14T15:44:27.057+07:00  INFO 22412 --- [project] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-14T15:44:27.108+07:00  INFO 22412 --- [project] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-06-14T15:44:27.114+07:00  INFO 22412 --- [project] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6b892263
+2026-06-14T15:44:27.115+07:00  INFO 22412 --- [project] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-06-14T15:44:27.117+07:00  WARN 22412 --- [project] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-14T15:44:27.117+07:00  INFO 22412 --- [project] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/badminton?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.5
+	Default catalog/schema: badminton/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-14T15:44:27.326+07:00  INFO 22412 --- [project] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-14T15:44:27.911+07:00  WARN 22412 --- [project] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-14T15:44:28.365+07:00  INFO 22412 --- [project] [restartedMain] org.example.project.ProjectApplication   : Started ProjectApplication in 2.02 seconds (process running for 1247.82)
